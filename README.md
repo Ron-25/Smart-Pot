@@ -1,4 +1,4 @@
-# smart_po
+# smart_pot
 
 A new Flutter project.
 
