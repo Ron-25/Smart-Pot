@@ -1,0 +1,7 @@
+{
+    "@@locale": "en",
+    "appTitle": "Smart Pot",
+    "@appTitle": {},
+    "welcome_message": "Welcome to Smart Pot!",
+    "@welcome_message": {}
+}
