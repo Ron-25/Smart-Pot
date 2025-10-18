@@ -3,5 +3,9 @@
     "appTitle": "Smart Pot",
     "@appTitle": {},
     "welcome_message": "Welcome to Smart Pot!",
-    "@welcome_message": {}
+    "@welcome_message": {},
+    "continue_button": "Continue",
+    "@continue_button": {},
+    "close_button": "Close",
+    "@close_button": {}
 }

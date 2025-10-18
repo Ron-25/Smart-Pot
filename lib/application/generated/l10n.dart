@@ -69,6 +69,21 @@ class S {
       args: [],
     );
   }
+
+  /// `Continue`
+  String get continue_button {
+    return Intl.message(
+      'Continue',
+      name: 'continue_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close`
+  String get close_button {
+    return Intl.message('Close', name: 'close_button', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

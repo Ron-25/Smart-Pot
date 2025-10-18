@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "appTitle": MessageLookupByLibrary.simpleMessage("Smart Pot"),
+    "close_button": MessageLookupByLibrary.simpleMessage("Close"),
+    "continue_button": MessageLookupByLibrary.simpleMessage("Continue"),
     "welcome_message": MessageLookupByLibrary.simpleMessage(
       "Welcome to Smart Pot!",
     ),
