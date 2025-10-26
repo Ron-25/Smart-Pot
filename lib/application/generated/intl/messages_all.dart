@@ -20,9 +20,9 @@ import 'messages_en.dart' as messages_en;
 import 'messages_es.dart' as messages_es;
 
 typedef Future<dynamic> LibraryLoader();
-Map<String, LibraryLoader> _deferredLibraries = {
-  'en': () => new SynchronousFuture(null),
-  'es': () => new SynchronousFuture(null),
+Map<String, LibraryLoader> _deferredLibraries = <String, LibraryLoader>{
+  'en': () => new SynchronousFuture<dynamic>(null),
+  'es': () => new SynchronousFuture<dynamic>(null),
 };
 
 MessageLookupByLibrary? _findExact(String localeName) {
@@ -38,19 +38,19 @@ MessageLookupByLibrary? _findExact(String localeName) {
 
 /// User programs should call this before using [localeName] for messages.
 Future<bool> initializeMessages(String localeName) {
-  var availableLocale = Intl.verifiedLocale(
+  String? availableLocale = Intl.verifiedLocale(
     localeName,
-    (locale) => _deferredLibraries[locale] != null,
+    (String locale) => _deferredLibraries[locale] != null,
     onFailure: (_) => null,
   );
   if (availableLocale == null) {
-    return new SynchronousFuture(false);
+    return new SynchronousFuture<bool>(false);
   }
-  var lib = _deferredLibraries[availableLocale];
-  lib == null ? new SynchronousFuture(false) : lib();
+  LibraryLoader? lib = _deferredLibraries[availableLocale];
+  lib == null ? new SynchronousFuture<bool>(false) : lib();
   initializeInternalMessageLookup(() => new CompositeMessageLookup());
   messageLookup.addLocale(availableLocale, _findGeneratedMessagesFor);
-  return new SynchronousFuture(true);
+  return new SynchronousFuture<bool>(true);
 }
 
 bool _messagesExistFor(String locale) {
@@ -62,7 +62,7 @@ bool _messagesExistFor(String locale) {
 }
 
 MessageLookupByLibrary? _findGeneratedMessagesFor(String locale) {
-  var actualLocale = Intl.verifiedLocale(
+  String? actualLocale = Intl.verifiedLocale(
     locale,
     _messagesExistFor,
     onFailure: (_) => null,

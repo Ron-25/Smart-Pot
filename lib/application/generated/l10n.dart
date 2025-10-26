@@ -28,14 +28,14 @@ class S {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name =
+    final String name =
         (locale.countryCode?.isEmpty ?? false)
             ? locale.languageCode
             : locale.toString();
-    final localeName = Intl.canonicalizedLocale(name);
+    final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      final instance = S();
+      final S instance = S();
       S._current = instance;
 
       return instance;
@@ -43,7 +43,7 @@ class S {
   }
 
   static S of(BuildContext context) {
-    final instance = S.maybeOf(context);
+    final S? instance = S.maybeOf(context);
     assert(
       instance != null,
       'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
@@ -51,50 +51,38 @@ class S {
     return instance!;
   }
 
-  static S? maybeOf(BuildContext context) {
-    return Localizations.of<S>(context, S);
-  }
+  static S? maybeOf(BuildContext context) => Localizations.of<S>(context, S);
 
   /// `Smart Pot`
-  String get appTitle {
-    return Intl.message('Smart Pot', name: 'appTitle', desc: '', args: []);
-  }
+  String get appTitle => Intl.message('Smart Pot', name: 'appTitle', desc: '', args: <Object>[]);
 
   /// `Welcome to Smart Pot!`
-  String get welcome_message {
-    return Intl.message(
+  String get welcome_message => Intl.message(
       'Welcome to Smart Pot!',
       name: 'welcome_message',
       desc: '',
-      args: [],
+      args: <Object>[],
     );
-  }
 
   /// `Continue`
-  String get continue_button {
-    return Intl.message(
+  String get continue_button => Intl.message(
       'Continue',
       name: 'continue_button',
       desc: '',
-      args: [],
+      args: <Object>[],
     );
-  }
 
   /// `Close`
-  String get close_button {
-    return Intl.message('Close', name: 'close_button', desc: '', args: []);
-  }
+  String get close_button => Intl.message('Close', name: 'close_button', desc: '', args: <Object>[]);
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   const AppLocalizationDelegate();
 
-  List<Locale> get supportedLocales {
-    return const <Locale>[
+  List<Locale> get supportedLocales => const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'es'),
     ];
-  }
 
   @override
   bool isSupported(Locale locale) => _isSupported(locale);
@@ -104,7 +92,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   bool shouldReload(AppLocalizationDelegate old) => false;
 
   bool _isSupported(Locale locale) {
-    for (var supportedLocale in supportedLocales) {
+    for (Locale supportedLocale in supportedLocales) {
       if (supportedLocale.languageCode == locale.languageCode) {
         return true;
       }

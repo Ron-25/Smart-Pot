@@ -1,7 +1,7 @@
 
 import 'package:flutter/services.dart';
 import 'package:smart_pot/application/constants/assets.dart';
-import 'package:smart_pot/core/core.dart';
+import 'package:smart_pot/core/core.dart' hide State;
 import 'package:smart_pot/shared/shared.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -25,7 +25,7 @@ class _WelcomePageState extends BasePageState<WelcomePage, Null> {
         spacing: 30,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           Container(
             decoration: BoxDecoration(
               color: theme.colorScheme.primaryContainer,
@@ -47,7 +47,7 @@ class _WelcomePageState extends BasePageState<WelcomePage, Null> {
           Row(
             spacing: 15,
             mainAxisAlignment: MainAxisAlignment.end,
-            children: [
+            children: <Widget>[
               ElevatedButton.icon(
                 onPressed: (){
                   SystemNavigator.pop();

@@ -15,8 +15,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) => MaterialApp(
         title: 'Smart Pot',
         theme: AppTheme.light,
         localizationsDelegates: AppLocalizationSetup.localizationsDelegates,
@@ -32,5 +31,4 @@ class MyApp extends StatelessWidget {
         ),
         home: const WelcomePage()
       );
-  }
 }

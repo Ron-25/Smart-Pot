@@ -4,8 +4,8 @@ import 'package:smart_pot/application/application.dart';
 
 class AppLocalizationSetup {
   static final List<Locale> supportedLocales = S.delegate.supportedLocales;
-  
-  static const Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates = [
+
+  static const Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
     S.delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalWidgetsLocalizations.delegate,
